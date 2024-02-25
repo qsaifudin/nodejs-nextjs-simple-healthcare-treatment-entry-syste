@@ -1,0 +1,24 @@
+.animateText {
+  font-family: 'Open Sans';
+  font-weight: 800;
+  font-size: 30px;
+  background: linear-gradient(to right,
+      currentColor 0,
+      #a2ebd58f 10%,
+      currentColor 20%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: borderAnimate 10s infinite alternate;
+}
+
+@keyframes borderAnimate {
+
+  0%,
+  100% {
+    background-position: -100px;
+  }
+
+  50% {
+    background-position: 510px;
+  }
+}

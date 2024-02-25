@@ -1,11 +1,10 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 import styles from "@/app/css/NavbarComponent.module.css"
 
 export function NavbarComponent() {
   return (
-    <Navbar  className="py-2">
+    <Navbar  className="py-2 px-20" maxWidth="xl">
       <NavbarBrand>
         <Link href="https://qsaifudin.site">
         <h3 style={{fontSize: "30px"}}>👉<span className={styles.animateText}>Saifudin</span> </h3>

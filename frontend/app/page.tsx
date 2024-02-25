@@ -1,13 +1,9 @@
-import Image from "next/image";
-import { Button } from "@nextui-org/button";
-import { TableComponent } from "./components/TableComponent";
-import { CardComponent } from "./components/CardComponent";
+import Treatments from "./treatments/page";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <TableComponent />
-      {/* <CardComponent></CardComponent> */}
-      </main>
+    <main className="flex flex-col items-center justify-between pt-2 px-24">
+      <Treatments></Treatments>
+    </main>
   );
 }

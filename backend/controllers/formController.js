@@ -1,4 +1,5 @@
 const db = require("../config/firebaseConfig");
+const admin = require('firebase-admin');
 
 exports.createForm = async (req, res) => {
   try {
@@ -10,6 +11,9 @@ exports.createForm = async (req, res) => {
       medicationsPrescribed,
       costOfTreatment,
     } = req.body;
+
+    const timestamp = admin.firestore.FieldValue.serverTimestamp();
+
     const data = {
       patientName,
       patientId,
@@ -17,7 +21,9 @@ exports.createForm = async (req, res) => {
       treatmentDescription,
       medicationsPrescribed,
       costOfTreatment,
+      createdAt: timestamp
     };
+    console.log("🚀 ~ exports.createForm= ~ data:", data)
     const responseDb = await db.collection("treatments").add(data);
     res.success("Form created successfully", responseDb);
   } catch (error) {
@@ -27,7 +33,7 @@ exports.createForm = async (req, res) => {
 
 exports.getAllForms = async (req, res) => {
   try {
-    const snapshot = await db.collection("treatments").get();
+    const snapshot = await db.collection("treatments").orderBy("createdAt", "desc").get();
     const forms = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     res.success("Forms retrieved successfully", forms);
   } catch (error) {

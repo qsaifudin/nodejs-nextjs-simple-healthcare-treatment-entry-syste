@@ -1,15 +1,15 @@
 import { Chip, Tooltip } from "@nextui-org/react";
-import { DeleteIcon, EyeIcon } from "../components/icon";
+import { DeleteIcon } from "../components/icon";
 import React from "react";
 
 export type Treatment = {
   id: string;
   patientName: string;
-  patientId: string; // Numeric or Alphanumeric
-  dateOfTreatment: string; // Date (ISO 8601 format)
-  treatmentDescription: string[]; // Array of Strings
-  medicationsPrescribed: string[]; // Array of Strings
-  costOfTreatment: number; // Float/Decimal
+  patientId: string;
+  dateOfTreatment: string;
+  treatmentDescription: string[];
+  medicationsPrescribed: string[];
+  costOfTreatment: number;
 };
 
 export const columns = [
@@ -43,7 +43,7 @@ export const columns = [
   },
 ];
 
-export const renderCell = (treatment:Treatment, columnKey:React.Key,deleteAction) => {
+export const renderCell = (treatment: Treatment, columnKey: React.Key, deleteAction) => {
   const cellValue = treatment[columnKey as keyof Treatment];
   const deleteFromIcon = () => {
     deleteAction(treatment.id);
@@ -51,27 +51,22 @@ export const renderCell = (treatment:Treatment, columnKey:React.Key,deleteAction
 
   switch (columnKey) {
     case "treatmentDescription":
-      return (
-        treatment.treatmentDescription.map((desc, index) => (
-          <Chip key={index} variant="bordered" radius="sm" className="mr-1" size="sm">
-            {desc}
-          </Chip>
-        ))
-      );
+      return treatment.treatmentDescription.map((desc, index) => (
+        <Chip key={index} variant="bordered" radius="sm" className="mr-1" size="sm">
+          {desc}
+        </Chip>
+      ));
     case "medicationsPrescribed":
-      return (
-        treatment.medicationsPrescribed.map((med, index) => (
-          <Chip key={index} variant="bordered" radius="sm" className="mr-1" size="sm">
-            {med}
-          </Chip>
-        ))
-      );
+      return treatment.medicationsPrescribed.map((med, index) => (
+        <Chip key={index} variant="bordered" radius="sm" className="mr-1" size="sm">
+          {med}
+        </Chip>
+      ));
     case "actions":
       return (
         <div className="relative flex items-center gap-2">
           <Tooltip color="danger" content="Delete Treatment">
-          <span className="text-lg text-danger cursor-pointer active:opacity-50">
-              {/* <EyeIcon /> */}
+            <span className="text-lg text-danger cursor-pointer active:opacity-50">
               <DeleteIcon onClick={deleteFromIcon} />
             </span>
           </Tooltip>
@@ -80,4 +75,4 @@ export const renderCell = (treatment:Treatment, columnKey:React.Key,deleteAction
     default:
       return cellValue;
   }
-}
+};

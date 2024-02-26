@@ -4,7 +4,7 @@
   "description": "- **Saifudin**\r   - Email: qsaifudin.official@gmail.com\r   - LinkedIn: [https://www.linkedin.com/in/qsaifudin/](https://www.linkedin.com/in/qsaifudin/)\r   - Personal Web: [https://qsaifudin.site/](https://qsaifudin.site/)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "nodemon app.js"
   },
   "keywords": [],
   "author": "",

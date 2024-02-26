@@ -52,12 +52,12 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         // Handle success
-        onClose()
-        clearFormData()
-        updateTreatmentData()
+        onClose();
+        clearFormData();
+        updateTreatmentData();
       } else {
         // Handle error
         console.error("Failed to submit form:", response.statusText);
@@ -75,7 +75,7 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
         Entry New Treatment
       </Button>
       <Modal
-      backdrop="blur"
+        backdrop="blur"
         size="3xl"
         isOpen={isOpen}
         onOpenChange={(nextOpen) => {
@@ -88,21 +88,11 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Entry New Treatment
-              </ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Entry New Treatment</ModalHeader>
               <ModalBody>
                 <div className="grid grid-cols-2 gap-4">
-                  <Input
-                    label="Patient Name"
-                    value={patientName}
-                    onValueChange={setPatientName}
-                  />
-                  <Input
-                    label="Patient ID"
-                    value={patientId}
-                    onValueChange={setPatientId}
-                  />
+                  <Input label="Patient Name" value={patientName} onValueChange={setPatientName} />
+                  <Input label="Patient ID" value={patientId} onValueChange={setPatientId} />
                   <Input
                     type="date"
                     label="Date of Treatment"

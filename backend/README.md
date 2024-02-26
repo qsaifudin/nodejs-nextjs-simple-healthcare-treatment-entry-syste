@@ -1,4 +1,5 @@
-# Simple Healthcare Treatment Entry System
+# Backend Simple Healthcare Treatment Entry System
+
 ## Author
 
 - **Saifudin**
@@ -8,3 +9,22 @@
 
 ## System Requirements
 Ensure that your system meets the following requirements:
+
+- Node.js (version 14 or higher)
+- npm (Node Package Manager)
+
+## Setup
+
+1. Install dependencies using npm:
+   ```bash
+   npm install
+   ```
+
+
+## Usage
+
+1. Run the application using the following command:
+   ```bash
+   npm start
+   ```
+   The application will be accessible at http://localhost:5000 by default.

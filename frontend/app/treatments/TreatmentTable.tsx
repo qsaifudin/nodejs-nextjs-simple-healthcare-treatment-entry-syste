@@ -8,26 +8,31 @@ import {
   TableRow,
   TableCell,
   Pagination,
+  Spinner,
 } from "@nextui-org/react";
 import { Treatment, columns, renderCell } from "./column";
 import { useMemo, useState } from "react";
 import { TreatmentModal } from "./TreatmentModal";
 
-export function TreatmentTable({ treatment, updateTreatmentData }: { treatment: Treatment[], updateTreatmentData: () => void }) {
-
-
+export function TreatmentTable({
+  treatment,
+  isLoading,
+  setIsLoading,
+  updateTreatmentData,
+}: {
+  treatment: Treatment[];
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
+  updateTreatmentData: () => void;
+}) {
   const topContent = useMemo(() => {
     return (
       <div className="flex justify-between gap-3 ">
         <h2 className="text-2xl font-extrabold dark:text-white">
           Simple Healthcare{" "}
-          <mark className="px-2 text-white  rounded dark:bg-green-700">
-            Treatment
-          </mark>{" "}
-          Entry System
+          <mark className="px-2 text-white  rounded dark:bg-green-700">Treatment</mark> Entry System
         </h2>
-        <TreatmentModal updateTreatmentData={updateTreatmentData}/>
-        
+        <TreatmentModal updateTreatmentData={updateTreatmentData} />
       </div>
     );
   }, []);
@@ -43,6 +48,16 @@ export function TreatmentTable({ treatment, updateTreatmentData }: { treatment: 
 
     return treatment.slice(start, end);
   }, [page, treatment]);
+
+  function deleteAction(id) {
+    console.log("🚀 ~ deleteAction ~ id:", id);
+    setIsLoading(true);
+    fetch("http://localhost:5000/api/form/" + id, { method: "DELETE" }).then((response) => {
+      console.log("🚀 ~ .then ~ response:", response);
+      updateTreatmentData();
+    });
+    setIsLoading(false);
+  }
 
   return (
     <Table
@@ -69,12 +84,15 @@ export function TreatmentTable({ treatment, updateTreatmentData }: { treatment: 
       <TableHeader columns={columns}>
         {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
       </TableHeader>
-      <TableBody items={items} emptyContent={"No rows to display."}>
+      <TableBody
+        items={items}
+        emptyContent={"No rows to display."}
+        isLoading={isLoading}
+        loadingContent={<Spinner label="Loading..." />}
+      >
         {(item) => (
           <TableRow key={item.id}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
-            )}
+            {(columnKey) => <TableCell>{renderCell(item, columnKey, deleteAction)}</TableCell>}
           </TableRow>
         )}
       </TableBody>

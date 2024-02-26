@@ -15,6 +15,7 @@ import { useState } from "react";
 
 export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: () => void }) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
   const [patientName, setPatientName] = useState("");
   const [patientId, setPatientId] = useState("");
   const [dateOfTreatment, setDateOfTreatment] = useState("");
@@ -43,6 +44,7 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
     };
 
     try {
+      setIsLoading(true);
       const response = await fetch("http://localhost:5000/api/form", {
         method: "POST",
         headers: {
@@ -61,8 +63,10 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
         // Handle error
         console.error("Failed to submit form:", response.statusText);
       }
+      setIsLoading(false);
     } catch (error) {
       console.error("Failed to submit form:", error.message);
+      setIsLoading(false);
     }
   };
 
@@ -143,7 +147,7 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button color="primary" onPress={handleSave}>
+                <Button color="primary" onPress={handleSave} isLoading={isLoading}>
                   Save
                 </Button>
               </ModalFooter>

@@ -1,5 +1,5 @@
 import { Chip, Tooltip } from "@nextui-org/react";
-import { EyeIcon } from "../components/icon";
+import { DeleteIcon, EyeIcon } from "../components/icon";
 import React from "react";
 
 export type Treatment = {
@@ -37,14 +37,18 @@ export const columns = [
     key: "costOfTreatment",
     label: "Cost of Treatment",
   },
-  // {
-  //   key: "actions",
-  //   label: "Action",
-  // },
+  {
+    key: "actions",
+    label: "Action",
+  },
 ];
 
-export const renderCell = (treatment:Treatment, columnKey:React.Key) => {
+export const renderCell = (treatment:Treatment, columnKey:React.Key,deleteAction) => {
   const cellValue = treatment[columnKey as keyof Treatment];
+  const deleteFromIcon = () => {
+    deleteAction(treatment.id)
+    console.log("Delete action");
+  };
 
   switch (columnKey) {
     case "treatmentDescription":
@@ -66,9 +70,10 @@ export const renderCell = (treatment:Treatment, columnKey:React.Key) => {
     case "actions":
       return (
         <div className="relative flex items-center gap-2">
-          <Tooltip content="Details">
-            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-              <EyeIcon />
+          <Tooltip color="danger" content="Delete Treatment">
+          <span className="text-lg text-danger cursor-pointer active:opacity-50">
+              {/* <EyeIcon /> */}
+              <DeleteIcon onClick={deleteFromIcon} />
             </span>
           </Tooltip>
         </div>

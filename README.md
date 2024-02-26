@@ -3,7 +3,7 @@ Welcome to the Simple Healthcare Treatment Entry System! This system provides a 
 
 GitHub Repo : https://github.com/qsaifudin/nodejs-nextjs-simple-healthcare-treatment-entry-system.git
 
-Video Demo : 
+Video Demo : https://youtu.be/9Ce4MHsSnbc
 
 ## Author
 

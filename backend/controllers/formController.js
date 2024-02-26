@@ -1,6 +1,7 @@
 const db = require("../config/firebaseConfig");
-const admin = require('firebase-admin');
+const admin = require("firebase-admin");
 
+// Add Treatment
 exports.createForm = async (req, res) => {
   try {
     const {
@@ -21,9 +22,8 @@ exports.createForm = async (req, res) => {
       treatmentDescription,
       medicationsPrescribed,
       costOfTreatment,
-      createdAt: timestamp
+      createdAt: timestamp,
     };
-    console.log("🚀 ~ exports.createForm= ~ data:", data)
     const responseDb = await db.collection("treatments").add(data);
     res.success("Form created successfully", responseDb);
   } catch (error) {
@@ -31,6 +31,7 @@ exports.createForm = async (req, res) => {
   }
 };
 
+// Get All Treatments
 exports.getAllForms = async (req, res) => {
   try {
     const snapshot = await db.collection("treatments").orderBy("createdAt", "desc").get();
@@ -41,6 +42,7 @@ exports.getAllForms = async (req, res) => {
   }
 };
 
+// Get Single Treatment by ID
 exports.getForm = async (req, res) => {
   try {
     const formRef = db.collection("treatments").doc(req.params.id);
@@ -55,6 +57,7 @@ exports.getForm = async (req, res) => {
   }
 };
 
+// Update Treatment by ID
 exports.updateForm = async (req, res) => {
   try {
     const updatedForm = req.body;
@@ -66,6 +69,7 @@ exports.updateForm = async (req, res) => {
   }
 };
 
+// Delete Treatment by ID
 exports.deleteForm = async (req, res) => {
   try {
     const formRef = db.collection("treatments").doc(req.params.id);

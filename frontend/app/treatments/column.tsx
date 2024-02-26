@@ -46,8 +46,7 @@ export const columns = [
 export const renderCell = (treatment:Treatment, columnKey:React.Key,deleteAction) => {
   const cellValue = treatment[columnKey as keyof Treatment];
   const deleteFromIcon = () => {
-    deleteAction(treatment.id)
-    console.log("Delete action");
+    deleteAction(treatment.id);
   };
 
   switch (columnKey) {

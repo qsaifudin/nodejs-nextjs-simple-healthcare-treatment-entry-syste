@@ -58,7 +58,6 @@ export function TreatmentModal({ updateTreatmentData }: { updateTreatmentData: (
         onClose()
         clearFormData()
         updateTreatmentData()
-        console.log("Form submitted successfully");
       } else {
         // Handle error
         console.error("Failed to submit form:", response.statusText);

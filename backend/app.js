@@ -8,7 +8,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Middleware to handle response
 app.use(responseHelper);
+
+// Routes
 app.use("/api", formRoutes);
 app.use("/", (req, res) => {
   res.send("Welcome to the backend");

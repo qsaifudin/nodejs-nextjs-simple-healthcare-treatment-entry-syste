@@ -50,10 +50,8 @@ export function TreatmentTable({
   }, [page, treatment]);
 
   function deleteAction(id) {
-    console.log("🚀 ~ deleteAction ~ id:", id);
     setIsLoading(true);
     fetch("http://localhost:5000/api/form/" + id, { method: "DELETE" }).then((response) => {
-      console.log("🚀 ~ .then ~ response:", response);
       updateTreatmentData();
     });
     setIsLoading(false);

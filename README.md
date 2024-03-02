@@ -5,13 +5,6 @@ GitHub Repo : https://github.com/qsaifudin/nodejs-nextjs-simple-healthcare-treat
 
 Video Demo : https://youtu.be/9Ce4MHsSnbc
 
-## Author
-
-- **Saifudin**
-  - Email: qsaifudin.official@gmail.com
-  - LinkedIn: [https://www.linkedin.com/in/qsaifudin/](https://www.linkedin.com/in/qsaifudin/)
-  - Personal Web: [https://qsaifudin.site/](https://qsaifudin.site/)
-
 
 ## Features
 
@@ -21,3 +14,12 @@ Video Demo : https://youtu.be/9Ce4MHsSnbc
 - Frontend built with React Next.js, using NextUI for UI framework.
 
 Detail setup instructions and system requirements are already available in the `README.me` file inside the backend and frontend folders.
+
+
+## Author
+
+- **Saifudin**
+  - Email: qsaifudin.official@gmail.com
+  - LinkedIn: [https://www.linkedin.com/in/qsaifudin/](https://www.linkedin.com/in/qsaifudin/)
+  - Personal Web: [https://qsaifudin.site/](https://qsaifudin.site/)
+

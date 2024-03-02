@@ -1,4 +1,5 @@
-# Simple Healthcare Treatment Entry System
+# Simple Healthcare Treatment Entry System Using Nodejs, Reactjs, and Firestore
+
 Welcome to the Simple Healthcare Treatment Entry System! This system provides a platform for managing healthcare treatment entries, allowing users to perform CRUD operations via API and manage entries through a user-friendly frontend interface.
 
 GitHub Repo : https://github.com/qsaifudin/nodejs-nextjs-simple-healthcare-treatment-entry-system.git
